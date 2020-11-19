@@ -1,7 +1,10 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:with_u/delayed_animation.dart';
+import 'package:with_u/resources/Colours.dart';
+import 'package:with_u/resources/Styles.dart';
+import './delayed_animation.dart';
+import '../resources/Strings.dart';
 
 class LogIn extends StatefulWidget {
   @override
@@ -29,12 +32,11 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.white;
     _scale = 1 - _controller.value;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Color(0xFF8185E2),
+          backgroundColor: Colours.welcomeBGColor,
           body: Center(
             child: Column(
               children: <Widget>[
@@ -58,21 +60,15 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "Hi There",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
+                    Strings.welcomeWords1,
+                    style: Styles.welcomeWords1
                   ),
                   delay: delayedAmount + 1000,
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "I'm Reflectly",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35.0,
-                        color: color),
+                    Strings.welcomeWords2,
+                      style: Styles.welcomeWords1
                   ),
                   delay: delayedAmount + 2000,
                 ),
@@ -81,15 +77,15 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "Your New Personal",
-                    style: TextStyle(fontSize: 20.0, color: color),
+                    Strings.welcomeWords5,
+                    style: Styles.welcomeWords2,
                   ),
                   delay: delayedAmount + 3000,
                 ),
                 DelayedAnimation(
                   child: Text(
-                    "Journaling  companion",
-                    style: TextStyle(fontSize: 20.0, color: color),
+                    Strings.welcomeWords6,
+                    style: Styles.welcomeWords2,
                   ),
                   delay: delayedAmount + 3000,
                 ),
@@ -110,11 +106,8 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
               SizedBox(height: 50.0,),
                 DelayedAnimation(
                   child: Text(
-                    "I Already have An Account".toUpperCase(),
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: color),
+                    Strings.welcomeWords4.toUpperCase(),
+                    style: Styles.welcomeWords3
                   ),
                   delay: delayedAmount + 5000,
                 ),
@@ -147,7 +140,7 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
         ),
         child: Center(
           child: Text(
-            'Hi Reflectly',
+            Strings.welcomeWords3,
             style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,

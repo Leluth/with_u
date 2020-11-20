@@ -1,8 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:with_u/home_screen.dart';
 import 'package:with_u/resources/Colours.dart';
 import 'package:with_u/resources/Styles.dart';
+import 'package:with_u/utils/SharedpreferencesUtils.dart';
 import './delayed_animation.dart';
 import '../resources/Strings.dart';
 
@@ -15,6 +16,7 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
   final int delayedAmount = 500;
   double _scale;
   AnimationController _controller;
+
   @override
   void initState() {
     _controller = AnimationController(
@@ -33,12 +35,11 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     _scale = 1 - _controller.value;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
           backgroundColor: Colours.welcomeBGColor,
           body: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 AvatarGlow(
                   endRadius: 90,
@@ -127,11 +128,11 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
           //   ],
 
           // ),
-          ),
-    );
+          );
   }
 
-  Widget get _animatedButtonUI => Container(
+  Widget get _animatedButtonUI => GestureDetector(
+      child: Container(
         height: 60,
         width: 270,
         decoration: BoxDecoration(
@@ -148,7 +149,20 @@ class _LogInState extends State<LogIn> with SingleTickerProviderStateMixin {
             ),
           ),
         ),
+      ),
+    onTap: () {
+        SharedPreferencesUtils.savePreference(context,
+            "LogInToken", "LogInSucess");
+      Navigator.push<dynamic>(
+        context,
+        MaterialPageRoute<dynamic>(
+          builder: (BuildContext context) =>HomeScreen(),
+        ),
       );
+    },
+  );
+
+
 
   void _onTapDown(TapDownDetails details) {
     _controller.forward();

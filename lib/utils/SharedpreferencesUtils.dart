@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// 参考 https://www.jianshu.com/p/1158d1128084
 
 class SharedPreferencesUtils {
 

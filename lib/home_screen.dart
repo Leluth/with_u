@@ -77,7 +77,25 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         BottomBarView(
           tabIconsList: tabIconsList,
-          addClick: () {},
+          addClick: () {
+            // showModalBottomSheet(
+            //   context: context,
+            //   isScrollControlled: true,
+            //   backgroundColor: Colors.transparent,
+            //   builder: (BuildContext context) {
+            //     return new Container(
+            //       decoration: BoxDecoration(
+            //           borderRadius: BorderRadius
+            //               .only(topLeft: Radius.circular(10),
+            //               topRight:Radius.circular(10)),
+            //           color: AppTheme.nearlyWhite
+            //       ),
+            //       height: MediaQuery.of(context).size.height*0.65,
+            //       width: MediaQuery.of(context).size.width*0.65,
+            //     );
+            //   },
+            // );
+          },
           changeIndex: (int index) {
             if (index == 0 || index == 2) {
               animationController.reverse().then<dynamic>((data) {

@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'dart:math';
 import 'package:flutter/material.dart';
-
+import 'package:with_u/anniversary/calendar_table.dart';
 import 'tabIcon_bar.dart';
 import '../resources/theme.dart';
 import '../resources/Colours.dart';
@@ -23,8 +23,9 @@ class BottomBarView extends StatefulWidget {
 class _BottomBarViewState extends State<BottomBarView>
     with TickerProviderStateMixin {
   AnimationController animationController;
+
   var _crossFadeState = CrossFadeState.showFirst;
-  bool get isFirst=> _crossFadeState == CrossFadeState.showFirst;
+  bool get isFirst => _crossFadeState == CrossFadeState.showFirst;
 
   @override
   void initState() {
@@ -47,40 +48,41 @@ class _BottomBarViewState extends State<BottomBarView>
             secondCurve: Curves.decelerate,
             sizeCurve: Curves.bounceOut,
             duration: Duration(milliseconds: 800),
-            reverseDuration:Duration(milliseconds: 800),
+            reverseDuration: Duration(milliseconds: 800),
             crossFadeState: _crossFadeState,
             firstChild: Container(
               alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width*0.75,
+              width: MediaQuery.of(context).size.width * 0.75,
               height: 24,
               color: AppTheme.nearlyBlue,
             ),
             secondChild: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 400,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppTheme.nearlyDarkBlue,
-                gradient: LinearGradient(
-                    colors: [
-                      AppTheme.nearlyDarkBlue,
-                      HexColor('#6A88E5'),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight),
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
-                      offset: const Offset(8.0, 16.0),
-                      blurRadius: 16.0),
-                ],
+              width: MediaQuery.of(context).size.width * 0.75,
+              height: 470,
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: 400,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: AppTheme.nearlyDarkBlue,
+                  gradient: LinearGradient(colors: [
+                    AppTheme.nearlyDarkBlue,
+                    HexColor('#6A88E5'),
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
+                        offset: const Offset(8.0, 16.0),
+                        blurRadius: 16.0),
+                  ],
+                ),
+                child: FlutterLogo(
+                  textColor: Colors.white,
+                  size: 100,
+                  style: FlutterLogoStyle.stacked,
+                ),
               ),
-              child:
-              FlutterLogo(
-                textColor: Colors.white,
-//                colors: Colors.orange,
-                size: 100,style: FlutterLogoStyle.stacked,),
             ),
           ),
         ),
@@ -212,9 +214,9 @@ class _BottomBarViewState extends State<BottomBarView>
                           onTap: () {
                             widget.addClick();
                             setState(() {
-                              if (_crossFadeState == CrossFadeState.showFirst){
+                              if (_crossFadeState == CrossFadeState.showFirst) {
                                 _crossFadeState = CrossFadeState.showSecond;
-                              } else{
+                              } else {
                                 _crossFadeState = CrossFadeState.showFirst;
                               }
                             });

@@ -1,3 +1,4 @@
+import 'package:with_u/anniversary/anniversary_screen.dart';
 import 'package:with_u/main.dart';
 
 import 'bottom_bar/tabIcon_bar.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyHomePage();
+    tabBody = MyHomePage(animationController: animationController);
     super.initState();
   }
 
@@ -77,44 +78,46 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         BottomBarView(
           tabIconsList: tabIconsList,
-          addClick: () {
-            // showModalBottomSheet(
-            //   context: context,
-            //   isScrollControlled: true,
-            //   backgroundColor: Colors.transparent,
-            //   builder: (BuildContext context) {
-            //     return new Container(
-            //       decoration: BoxDecoration(
-            //           borderRadius: BorderRadius
-            //               .only(topLeft: Radius.circular(10),
-            //               topRight:Radius.circular(10)),
-            //           color: AppTheme.nearlyWhite
-            //       ),
-            //       height: MediaQuery.of(context).size.height*0.65,
-            //       width: MediaQuery.of(context).size.width*0.65,
-            //     );
-            //   },
-            // );
-          },
+          addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
                   tabBody =
-                      MyHomePage();
+                      MyHomePage(animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
                   tabBody =
-                      MyHomePage();
+                      AnniversaryScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      MyHomePage(animationController: animationController);
+                });
+              });
+            } else if (index == 3) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      MyHomePage(animationController: animationController);
                 });
               });
             }

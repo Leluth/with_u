@@ -1,13 +1,16 @@
 import 'dart:io';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:with_u/home_screen.dart';
 import 'package:with_u/resources/Colours.dart';
 import 'package:with_u/resources/theme.dart';
 import 'package:with_u/utils/SharedpreferencesUtils.dart';
 import 'login/login.dart';
+import 'modles/mymodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,42 +24,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-          title: 'With U',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
-            primarySwatch: Colors.blue,
-            // This makes the visual density adapt to the platform that you run
-            // the app on. For desktop platforms, the controls will be smaller and
-            // closer together (more dense) than on mobile platforms.
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
-          home: ActivePage(),
-        );
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<MyModel>(
+          create: (_) => MyModel(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'With U',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: ActivePage(),
+      ),
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.animationController}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final AnimationController animationController;
 
   @override
@@ -65,13 +53,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
+    setState(() {});
   }
 
   @override
@@ -86,8 +68,36 @@ class _MyHomePageState extends State<MyHomePage> {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return Container(
-      color: AppTheme.darkerText,
-    );
+        alignment: Alignment.center,
+        color: AppTheme.dark_grey,
+        child: Neumorphic(
+            style: NeumorphicStyle(
+                shape: NeumorphicShape.concave,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                depth: 8,
+                color: Colors.white),
+            child: Container(
+              alignment: Alignment.center,
+              child: NeumorphicButton(
+                style: NeumorphicStyle(
+                  shape: NeumorphicShape.flat,
+                  surfaceIntensity: 0.1,
+                  boxShape: NeumorphicBoxShape.stadium(),
+                  color: Colors.white,
+                  lightSource: LightSource.topLeft,
+                ),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                child: Text(
+                  "button",
+                  style: TextStyle(
+                      color: AppTheme.lightText,
+                      fontSize: 50,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+            )));
   }
 }
 
@@ -139,7 +149,6 @@ class _ActivePageState extends State<ActivePage>
               } else {
                 return Stack(
                   children: <Widget>[
-                    MyHomePage(),
                     HomeScreen(),
                   ],
                 );

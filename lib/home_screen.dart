@@ -1,9 +1,12 @@
 import 'package:with_u/anniversary/anniversary_screen.dart';
 import 'package:with_u/main.dart';
+import 'package:with_u/message/message_list.dart';
+import 'package:with_u/tool/tool_screen.dart';
 
 import 'bottom_bar/tabIcon_bar.dart';
 import 'package:flutter/material.dart';
 import 'bottom_bar/bottom_bar.dart';
+import 'message/message_screen.dart';
 import 'resources/theme.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyHomePage(animationController: animationController);
+    tabBody = MessageScreen(animationController: animationController);
     super.initState();
   }
 
@@ -87,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      MyHomePage(animationController: animationController);
+                      MessageScreen(animationController: animationController);
                 });
               });
             } else if (index == 1) {
@@ -107,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      MyHomePage(animationController: animationController);
+                      ToolScreen(animationController: animationController);
                 });
               });
             } else if (index == 3) {

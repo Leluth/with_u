@@ -1,44 +1,35 @@
-import 'package:with_u/anniversary/calendar_view.dart';
-import 'title_view.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:with_u/anniversary/title_view.dart';
+import 'package:with_u/message/slogan_view.dart';
+import 'package:with_u/resources/theme.dart';
 import 'package:flutter/material.dart';
-import '../resources/theme.dart';
 
-class AnniversaryScreen extends StatefulWidget {
-  const AnniversaryScreen({Key key, this.animationController}) : super(key: key);
+import 'message_list.dart';
+
+class MessageScreen extends StatefulWidget {
+  const MessageScreen({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _AnniversaryScreenState createState() => _AnniversaryScreenState();
+  _MessageScreenState createState() => _MessageScreenState();
 }
 
-class _AnniversaryScreenState extends State<AnniversaryScreen>
+class _MessageScreenState extends State<MessageScreen>
     with TickerProviderStateMixin {
-
   List<Widget> listViews = <Widget>[];
-  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     addAllListData();
     super.initState();
-    scrollController.addListener(() {});
   }
 
   void addAllListData() {
-    const int count = 3;
-    listViews.add(
-      TitleView(
-        titleTxt: '特别的一天',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-            Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+    const int count = 4;
 
     listViews.add(
-      CalendarView(
+      SloganView(
+        titleTxt: '所爱隔山海，山海皆可平',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -49,11 +40,31 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
 
     listViews.add(
       TitleView(
-        titleTxt: '特别的我们',
+        titleTxt: '留言',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+    listViews.add(
+      MessageListView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      TitleView(
+        titleTxt: '纪念与提醒',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
@@ -90,7 +101,6 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
           return const SizedBox();
         } else {
           return ListView.builder(
-            controller: scrollController,
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top +
                   24,

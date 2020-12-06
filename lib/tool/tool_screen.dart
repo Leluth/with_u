@@ -1,60 +1,42 @@
-import 'package:with_u/anniversary/calendar_view.dart';
-import 'title_view.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:with_u/resources/theme.dart';
 import 'package:flutter/material.dart';
-import '../resources/theme.dart';
+import 'package:with_u/tool/tool_list.dart';
 
-class AnniversaryScreen extends StatefulWidget {
-  const AnniversaryScreen({Key key, this.animationController}) : super(key: key);
+class ToolScreen extends StatefulWidget {
+  const ToolScreen({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _AnniversaryScreenState createState() => _AnniversaryScreenState();
+  _ToolScreenState createState() => _ToolScreenState();
 }
 
-class _AnniversaryScreenState extends State<AnniversaryScreen>
+class _ToolScreenState extends State<ToolScreen>
     with TickerProviderStateMixin {
-
   List<Widget> listViews = <Widget>[];
-  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     addAllListData();
     super.initState();
-    scrollController.addListener(() {});
   }
 
   void addAllListData() {
     const int count = 3;
+
     listViews.add(
-      TitleView(
-        titleTxt: '特别的一天',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+      SizedBox(
+        height: 70,
+      )
+    );
+
+    listViews.add(
+      ToolListView(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
             Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      CalendarView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: '特别的我们',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-            Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
+        mainScreenAnimationController: widget.animationController,
       ),
     );
   }
@@ -90,7 +72,6 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
           return const SizedBox();
         } else {
           return ListView.builder(
-            controller: scrollController,
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top +
                   24,

@@ -1,4 +1,5 @@
 import 'package:with_u/anniversary/calendar_view.dart';
+import 'package:with_u/anniversary/event_list/event_list.dart';
 import 'title_view.dart';
 import 'package:flutter/material.dart';
 import '../resources/theme.dart';
@@ -32,7 +33,7 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-            Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
@@ -42,7 +43,7 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-            Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
+            Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
@@ -50,6 +51,16 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
     listViews.add(
       TitleView(
         titleTxt: '特别的我们',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+            Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      EventListView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
@@ -52,9 +53,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _incrementCounter() {
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,37 +65,16 @@ class _MyHomePageState extends State<MyHomePage> {
       systemNavigationBarDividerColor: Colors.grey,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
-    return Container(
-        alignment: Alignment.center,
-        color: AppTheme.dark_grey,
-        child: Neumorphic(
-            style: NeumorphicStyle(
-                shape: NeumorphicShape.concave,
-                boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-                depth: 8,
-                color: Colors.white),
-            child: Container(
-              alignment: Alignment.center,
-              child: NeumorphicButton(
-                style: NeumorphicStyle(
-                  shape: NeumorphicShape.flat,
-                  surfaceIntensity: 0.1,
-                  boxShape: NeumorphicBoxShape.stadium(),
-                  color: Colors.white,
-                  lightSource: LightSource.topLeft,
-                ),
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                child: Text(
-                  "button",
-                  style: TextStyle(
-                      color: AppTheme.lightText,
-                      fontSize: 50,
-                  ),
-                ),
-                onPressed: () {},
-              ),
-            )));
+    return new Scaffold(
+      body:  new Swiper(
+        itemBuilder: (BuildContext context, int index) {
+          return new Image.asset('lib/images/area1.png');
+        },
+        itemCount: 10,
+        itemWidth: 300.0,
+        layout: SwiperLayout.STACK,
+      )
+    );
   }
 }
 

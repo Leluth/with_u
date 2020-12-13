@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:with_u/anniversary/event_list/event_detail.dart';
 
 class EventListView extends StatelessWidget {
   final AnimationController animationController;
@@ -37,6 +40,13 @@ class EventListView extends StatelessWidget {
                       loop: true,
                       onTap: (index) {
                         print(index);
+                        Navigator.push<dynamic>(
+                          context,
+                          MaterialPageRoute<dynamic>(
+                            builder: (BuildContext context) => EventDetailScreen(),
+                          ),
+                          // Bottom2TopRouter(child: EventDetailScreen(), duration: 300),
+                        );
                       },
                       itemCount: 4,
                       itemWidth: 300.0,
@@ -59,4 +69,29 @@ class EventListView extends StatelessWidget {
       },
     );
   }
+}
+
+class Bottom2TopRouter<T> extends PageRouteBuilder<T> {
+  final Widget child;
+  final int duration;
+  final Curve curve;
+
+  Bottom2TopRouter(
+      {this.child, this.duration = 500, this.curve = Curves.fastOutSlowIn})
+      : super(
+      transitionDuration: Duration(milliseconds: duration),
+      pageBuilder: (ctx, a1, a2) {
+        return child;
+      },
+      transitionsBuilder: (
+          ctx,
+          a1,
+          a2,
+          Widget child,
+          ) => SlideTransition(
+          position: Tween<Offset>(
+            begin: Offset(0.0, 1.0),
+            end: Offset(0.0, 0.0),
+          ).animate(CurvedAnimation(parent: a1, curve: curve)),
+          child: child));
 }

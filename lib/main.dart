@@ -5,6 +5,7 @@ import 'package:cloudbase_function/cloudbase_function.dart';
 import 'package:cloudbase_storage/cloudbase_storage.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:folding_cell/folding_cell/widget.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
@@ -119,6 +120,51 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Widget _buildFrontWidget(Color color) {
+    return Builder(builder: (BuildContext context) {
+      return GestureDetector(
+        onTap: () {
+          final foldingCellState =
+          context.findAncestorStateOfType<SimpleFoldingCellState>();
+          foldingCellState?.toggleFold();
+        },
+        child: Container(
+          color: color,
+          alignment: Alignment.center,
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              "colorString(color)",
+              style: TextStyle(color: Colors.white, shadows: [
+                Shadow(
+                    color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+              ]),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+  Widget _buildInnerWidget(Color color) {
+    return Builder(builder: (context) {
+      return GestureDetector(
+        onTap: () {
+          final foldingCellState =
+          context.findAncestorStateOfType<SimpleFoldingCellState>();
+          foldingCellState?.toggleFold();
+        },
+        child: Container(
+          color: Colors.transparent,
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              "CARD TITLE",
+            ),
+          ),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,13 +178,27 @@ class _MyHomePageState extends State<MyHomePage> {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return new Scaffold(
-      body:  new Swiper(
-        itemBuilder: (BuildContext context, int index) {
-          return new Image.asset('lib/images/area1.png');
-        },
-        itemCount: 10,
-        itemWidth: 300.0,
-        layout: SwiperLayout.STACK,
+      body: Align(
+        alignment: Alignment.center,
+        child: Neumorphic(
+          style: NeumorphicStyle(
+              shape: NeumorphicShape.flat,
+              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+              depth: 8,
+              intensity: 1,
+              lightSource: LightSource.topLeft,
+              color: Colors.transparent
+          ),
+          child: SimpleFoldingCell.create(
+            frontWidget: _buildFrontWidget(Colors.yellow[900]),
+            innerWidget: _buildInnerWidget(Colors.yellow[100]),
+            cellSize: Size(MediaQuery.of(context).size.width, 110),
+            padding: const EdgeInsets.all(0),
+            animationDuration: Duration(milliseconds: 300),
+            onOpen: () => print('cell opened'),
+            onClose: () => print('cell closed'),
+          ),
+        ),
       )
     );
   }

@@ -101,6 +101,7 @@ class _AnniversaryScreenState extends State<AnniversaryScreen>
           return const SizedBox();
         } else {
           return ListView.builder(
+            physics: new BouncingScrollPhysics(),
             controller: scrollController,
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top +

@@ -72,6 +72,7 @@ class _ToolScreenState extends State<ToolScreen>
           return const SizedBox();
         } else {
           return ListView.builder(
+            physics: new BouncingScrollPhysics(),
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top +
                   24,

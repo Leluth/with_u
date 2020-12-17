@@ -1,5 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:with_u/anniversary/title_view.dart';
+import 'package:with_u/message/anniversary_list.dart';
 import 'package:with_u/message/slogan_view.dart';
 import 'package:with_u/resources/theme.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MessageScreen extends StatefulWidget {
 class _MessageScreenState extends State<MessageScreen>
     with TickerProviderStateMixin {
   List<Widget> listViews = <Widget>[];
+
 
   @override
   void initState() {
@@ -68,6 +70,16 @@ class _MessageScreenState extends State<MessageScreen>
         animationController: widget.animationController,
       ),
     );
+
+    listViews.add(
+      AnniversaryListView(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+            Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+        mainScreenAnimationController: widget.animationController,
+      ),
+    );
   }
 
   Future<bool> getData() async {
@@ -101,6 +113,7 @@ class _MessageScreenState extends State<MessageScreen>
           return const SizedBox();
         } else {
           return ListView.builder(
+            physics: new BouncingScrollPhysics(),
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top +
                   24,

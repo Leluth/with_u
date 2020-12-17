@@ -59,7 +59,7 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                   child: new Image.asset(
                     'lib/images/placeholder.jpg',
                     fit: BoxFit.cover,
-                  ),
+                  ) ,
                 ),
               ],
             ),

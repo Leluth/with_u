@@ -31,7 +31,7 @@ class _MessageScreenState extends State<MessageScreen>
 
     listViews.add(
       SloganView(
-        titleTxt: '所爱隔山海，山海皆可平',
+        titleTxt: 'Merry Christmas!',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:

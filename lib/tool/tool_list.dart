@@ -25,11 +25,16 @@ class _ToolListViewState extends State<ToolListView>
     },
     {
       'imagepath': 'lib/images/area2.png',
+      'title': '连音',
+      'description': '同一刻，倾听宇宙的声音'
+    },
+    {
+      'imagepath': 'lib/images/area3.png',
       'title': '银幕',
       'description': '下午茶，电影，和你'
     },
     {
-      'imagepath': 'lib/images/area3.png',
+      'imagepath': 'lib/images/area1.png',
       'title': '星图',
       'description': '100个与你有关的成就'
     },

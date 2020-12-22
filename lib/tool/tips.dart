@@ -66,7 +66,7 @@ class TipView extends StatelessWidget {
                         child: SizedBox(
                           width: 80,
                           height: 80,
-                          child: Image.asset('lib/images/area1.png'),
+                          child: Image.asset('lib/images/area2.png'),
                         ),
                       )
                     ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:with_u/fonts/my_flutter_app_icons.dart';
 import 'package:with_u/resources/theme.dart';
 
 class EventDetailScreen extends StatefulWidget {
@@ -98,7 +99,7 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                             padding: const EdgeInsets.only(
                                 top: 32.0, left: 18, right: 16),
                             child: Text(
-                              'Web Design\nCourse',
+                              '子子是猪',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -108,47 +109,47 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, bottom: 8, top: 16),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  '\$28.99',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w200,
-                                    fontSize: 22,
-                                    letterSpacing: 0.27,
-                                    color: AppTheme.nearlyBlue,
-                                  ),
-                                ),
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Text(
-                                        '4.3',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w200,
-                                          fontSize: 22,
-                                          letterSpacing: 0.27,
-                                          color: AppTheme.grey,
-                                        ),
-                                      ),
-                                      Icon(
-                                        Icons.star,
-                                        color: AppTheme.nearlyBlue,
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(
+                          //       left: 16, right: 16, bottom: 8, top: 16),
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     children: <Widget>[
+                          //       Text(
+                          //         '\$28.99',
+                          //         textAlign: TextAlign.left,
+                          //         style: TextStyle(
+                          //           fontWeight: FontWeight.w200,
+                          //           fontSize: 22,
+                          //           letterSpacing: 0.27,
+                          //           color: AppTheme.nearlyBlue,
+                          //         ),
+                          //       ),
+                          //       Container(
+                          //         child: Row(
+                          //           children: <Widget>[
+                          //             Text(
+                          //               '4.3',
+                          //               textAlign: TextAlign.left,
+                          //               style: TextStyle(
+                          //                 fontWeight: FontWeight.w200,
+                          //                 fontSize: 22,
+                          //                 letterSpacing: 0.27,
+                          //                 color: AppTheme.grey,
+                          //               ),
+                          //             ),
+                          //             Icon(
+                          //               Icons.star,
+                          //               color: AppTheme.nearlyBlue,
+                          //               size: 24,
+                          //             ),
+                          //           ],
+                          //         ),
+                          //       )
+                          //     ],
+                          //   ),
+                          // ),
                           AnimatedOpacity(
                             duration: const Duration(milliseconds: 500),
                             opacity: opacity1,
@@ -171,7 +172,7 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                                 padding: const EdgeInsets.only(
                                     left: 16, right: 16, top: 8, bottom: 8),
                                 child: Text(
-                                  'Lorem ipsum is simply dummy text of printing & typesetting industry, Lorem ipsum is simply dummy text of printing & typesetting industry.',
+                                  '略略略略\n◟(˃᷄ꇴ˂᷅ ૂ๑)༡л̵ʱªʱª✧',
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w200,
@@ -209,7 +210,7 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                                                 .withOpacity(0.2)),
                                       ),
                                       child: Icon(
-                                        Icons.add,
+                                        MyFlutterApp.mask,
                                         color: AppTheme.nearlyBlue,
                                         size: 28,
                                       ),
@@ -237,7 +238,7 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                                       ),
                                       child: Center(
                                         child: Text(
-                                          'Join Course',
+                                          '编辑',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,

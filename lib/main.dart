@@ -17,6 +17,7 @@ import 'package:with_u/resources/Colours.dart';
 import 'package:with_u/resources/theme.dart';
 import 'package:with_u/utils/SharedpreferencesUtils.dart';
 import 'login/login.dart';
+import 'login/login_screen.dart';
 import 'modles/mymodel.dart';
 
 void main() async {
@@ -53,7 +54,7 @@ void main() async {
   if (authState != null) {
     await auth.getUserInfo().then((userInfo) {
       // 获取用户信息成功
-      print('获取用户信息成功:'+userInfo.toString());
+      print('获取用户信息成功:' + userInfo.toString());
     }).catchError((err) {
       // 获取用户信息失败
       print('获取用户信息失败');
@@ -125,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return GestureDetector(
         onTap: () {
           final foldingCellState =
-          context.findAncestorStateOfType<SimpleFoldingCellState>();
+              context.findAncestorStateOfType<SimpleFoldingCellState>();
           foldingCellState?.toggleFold();
         },
         child: Container(
@@ -145,12 +146,13 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     });
   }
+
   Widget _buildInnerWidget(Color color) {
     return Builder(builder: (context) {
       return GestureDetector(
         onTap: () {
           final foldingCellState =
-          context.findAncestorStateOfType<SimpleFoldingCellState>();
+              context.findAncestorStateOfType<SimpleFoldingCellState>();
           foldingCellState?.toggleFold();
         },
         child: Container(
@@ -178,29 +180,27 @@ class _MyHomePageState extends State<MyHomePage> {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return new Scaffold(
-      body: Align(
-        alignment: Alignment.center,
-        child: Neumorphic(
-          style: NeumorphicStyle(
-              shape: NeumorphicShape.flat,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              intensity: 1,
-              lightSource: LightSource.topLeft,
-              color: Colors.transparent
-          ),
-          child: SimpleFoldingCell.create(
-            frontWidget: _buildFrontWidget(Colors.yellow[900]),
-            innerWidget: _buildInnerWidget(Colors.yellow[100]),
-            cellSize: Size(MediaQuery.of(context).size.width, 110),
-            padding: const EdgeInsets.all(0),
-            animationDuration: Duration(milliseconds: 300),
-            onOpen: () => print('cell opened'),
-            onClose: () => print('cell closed'),
-          ),
+        body: Align(
+      alignment: Alignment.center,
+      child: Neumorphic(
+        style: NeumorphicStyle(
+            shape: NeumorphicShape.flat,
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+            depth: 8,
+            intensity: 1,
+            lightSource: LightSource.topLeft,
+            color: Colors.transparent),
+        child: SimpleFoldingCell.create(
+          frontWidget: _buildFrontWidget(Colors.yellow[900]),
+          innerWidget: _buildInnerWidget(Colors.yellow[100]),
+          cellSize: Size(MediaQuery.of(context).size.width, 110),
+          padding: const EdgeInsets.all(0),
+          animationDuration: Duration(milliseconds: 300),
+          onOpen: () => print('cell opened'),
+          onClose: () => print('cell closed'),
         ),
-      )
-    );
+      ),
+    ));
   }
 }
 
@@ -244,17 +244,9 @@ class _ActivePageState extends State<ActivePage>
             if (snap.connectionState == ConnectionState.done) {
               // print(snap.data);
               if (snap.data == "NotLog") {
-                return Stack(
-                  children: <Widget>[
-                    LogIn(),
-                  ],
-                );
+                return InitLogInScreen();
               } else {
-                return Stack(
-                  children: <Widget>[
-                    HomeScreen(),
-                  ],
-                );
+                return HomeScreen();
               }
             }
             if (snap.connectionState == ConnectionState.waiting) {
@@ -262,23 +254,26 @@ class _ActivePageState extends State<ActivePage>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    AvatarGlow(
-                      endRadius: 90,
-                      duration: Duration(seconds: 2),
-                      glowColor: Colors.white24,
-                      repeat: true,
-                      repeatPauseDuration: Duration(seconds: 2),
-                      startDelay: Duration(seconds: 1),
-                      child: Material(
-                          elevation: 8.0,
-                          shape: CircleBorder(),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.grey[100],
-                            child: FlutterLogo(
-                              size: 50.0,
-                            ),
-                            radius: 50.0,
-                          )),
+                    Hero(
+                      tag: 'AvatarGlow',
+                      child: AvatarGlow(
+                        endRadius: 90,
+                        duration: Duration(seconds: 2),
+                        glowColor: Colors.white24,
+                        repeat: true,
+                        repeatPauseDuration: Duration(seconds: 2),
+                        startDelay: Duration(seconds: 1),
+                        child: Material(
+                            elevation: 8.0,
+                            shape: CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.grey[100],
+                              child: FlutterLogo(
+                                size: 50.0,
+                              ),
+                              radius: 50.0,
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 100.0,
@@ -299,6 +294,7 @@ class _ActivePageState extends State<ActivePage>
     await Future.delayed(Duration(seconds: 3));
     String logInToken = await (SharedPreferencesUtils.getPreference(
         context, "LogInToken", 'NotLog')) as String;
-    return logInToken;
+    // return logInToken;
+    return 'NotLog';
   }
 }

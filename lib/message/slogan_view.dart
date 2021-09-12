@@ -1,6 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import '../resources/theme.dart';
+import '../resources/Theme.dart';
 import 'package:flutter/material.dart';
 
 class SloganView extends StatelessWidget {

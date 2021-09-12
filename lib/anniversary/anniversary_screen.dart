@@ -2,7 +2,7 @@ import 'package:with_u/anniversary/calendar_view.dart';
 import 'package:with_u/anniversary/event_list/event_list.dart';
 import 'title_view.dart';
 import 'package:flutter/material.dart';
-import '../resources/theme.dart';
+import '../resources/Theme.dart';
 
 class AnniversaryScreen extends StatefulWidget {
   const AnniversaryScreen({Key key, this.animationController}) : super(key: key);

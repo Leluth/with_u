@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:with_u/resources/Colours.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Theme.dart';
 
 import '../home_screen.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:with_u/fonts/my_flutter_app_icons.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Theme.dart';
 
 class EventDetailScreen extends StatefulWidget {
   @override

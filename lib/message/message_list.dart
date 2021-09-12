@@ -1,5 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Theme.dart';
 import 'package:flutter/material.dart';
 
 class MessageListView extends StatelessWidget {

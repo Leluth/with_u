@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:with_u/resources/Colours.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Theme.dart';
 
 class TipView extends StatelessWidget {
   final AnimationController animationController;

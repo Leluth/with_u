@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:folding_cell/folding_cell/widget.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Theme.dart';
 
 class AnniversaryListView extends StatefulWidget {
   const AnniversaryListView(

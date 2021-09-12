@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:with_u/modles/mymodel.dart';
 import 'tabIcon_bar.dart';
-import '../resources/theme.dart';
+import '../resources/Theme.dart';
 import '../resources/Colours.dart';
 import '../bottom_bar/toogle_rotate.dart';
 

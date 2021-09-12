@@ -7,7 +7,7 @@ import 'bottom_bar/tabIcon_bar.dart';
 import 'package:flutter/material.dart';
 import 'bottom_bar/bottom_bar.dart';
 import 'message/message_screen.dart';
-import 'resources/theme.dart';
+import 'resources/Theme.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

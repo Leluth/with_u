@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:with_u/tool/tips.dart';
-import '../resources/theme.dart';
+import '../resources/Theme.dart';
 
 class ToolListView extends StatefulWidget {
   const ToolListView(

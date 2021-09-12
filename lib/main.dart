@@ -14,7 +14,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:with_u/home_screen.dart';
 import 'package:with_u/resources/Colours.dart';
-import 'package:with_u/resources/theme.dart';
+import 'package:with_u/resources/Config.dart';
+import 'package:with_u/resources/Theme.dart';
 import 'package:with_u/utils/SharedpreferencesUtils.dart';
 import 'login/login.dart';
 import 'login/login_screen.dart';
@@ -25,14 +26,14 @@ void main() async {
 
   CloudBaseCore core = CloudBaseCore.init({
     // 填写您的云开发 env
-    'env': 'gliese667c-3gniwi3a69836d7b',
+    'env': Config.env,
     // 填写您的移动应用安全来源凭证
     // 生成凭证的应用标识必须是 Android 包名或者 iOS BundleID
     'appAccess': {
       // 凭证
-      'key': 'ac269b528c8b51e3ea7ff6c523c2c755',
+      'key': Config.appAccessKey,
       // 版本
-      'version': '1'
+      'version': Config.appAccessVersion
     },
     // 请求超时时间（选填）
     'timeout': 3000

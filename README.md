@@ -1,6 +1,6 @@
 # With_u
 
-A new Flutter application for Zizi's birthday present.
+WithU is a mobile application where couples can record their daily life and anniversaries
 
 ## Getting Started
 
